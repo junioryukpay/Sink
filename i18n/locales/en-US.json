@@ -139,8 +139,11 @@
       "subtitle": "Trusted by developers around the world",
       "stars": "Stars on GitHub",
       "forks": "Forks"
+    },
+    "testimonials": {
+      "title": "Loved by Users",
+      "subtitle": "See what developers are saying about Short"
     }
-
   },
   "dashboard": {
     "title": "Dashboard",
