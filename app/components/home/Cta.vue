@@ -25,20 +25,7 @@ const { github } = useAppConfig()
             <Button
               as-child
               size="lg"
-            >
-              <a
-                :href="`${github}?tab=readme-ov-file#%EF%B8%8F-deployment`"
-                target="_blank"
-                :title="$t('home.cta.button')"
-              >
-                {{ $t('home.cta.button') }}
-              </a>
-            </Button>
-
-            <Button
-              as-child
-              size="lg"
-              variant="outline"
+              class="px-5 text-base"
             >
               <NuxtLink to="/dashboard" :title="$t('dashboard.title')">
                 {{ $t('dashboard.title') }}
