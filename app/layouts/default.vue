@@ -1,11 +1,8 @@
 <script setup lang="ts">
-import NumberFlow from '@number-flow/vue'
-import { Menu, Star, X } from 'lucide-vue-next'
-import { GitHubIcon, TelegramIcon, XIcon } from 'vue3-simple-icons'
+import { Menu, X } from 'lucide-vue-next'
 
 const showMenu = ref(false)
-const { title, telegram, twitter, github } = useAppConfig()
-const { rawStats } = useGithubStats()
+const { title, logo } = useAppConfig()
 </script>
 
 <template>
@@ -36,12 +33,12 @@ const { rawStats } = useGithubStats()
                 class="flex items-center space-x-2"
               >
                 <span
-                  class="flex size-8 items-center justify-center rounded-full"
+                  class="flex size-8 items-center justify-center rounded-full overflow-hidden"
                 >
                   <img
-                    src="/sink.png"
+                    :src="logo || '/sink.png'"
                     :alt="`${title} Logo`"
-                    class="size-full rounded-full"
+                    class="size-full object-contain"
                   >
                 </span>
                 <span class="text-xl font-black">{{ title }}</span>
@@ -93,23 +90,6 @@ const { rawStats } = useGithubStats()
                   md:w-fit
                 "
               >
-                <Button
-                  as-child
-                  variant="outline"
-                  size="sm"
-                >
-                  <a
-                    :href="github"
-                    target="_blank"
-                    :title="$t('layouts.footer.social.github')"
-                    class="flex items-center gap-1.5"
-                  >
-                    <GitHubIcon class="size-4" />
-                    <Star class="size-3" />
-                    <NumberFlow class="tabular-nums" :value="rawStats.stars" />
-                  </a>
-                </Button>
-
                 <SwitchLanguage />
                 <SwitchTheme />
               </div>
@@ -147,12 +127,12 @@ const { rawStats } = useGithubStats()
             >
               <div class="flex items-center space-x-2">
                 <span
-                  class="flex size-8 items-center justify-center rounded-full"
+                  class="flex size-8 items-center justify-center rounded-full overflow-hidden"
                 >
                   <img
-                    src="/sink.png"
+                    :src="logo || '/sink.png'"
                     :alt="`${title} Logo`"
-                    class="size-full rounded-full"
+                    class="size-full object-contain"
                   >
                 </span>
                 <span class="text-xl font-black">{{ title }}</span>
@@ -160,61 +140,8 @@ const { rawStats } = useGithubStats()
             </NuxtLink>
 
             <small class="block text-center text-sm text-muted-foreground">
-              &copy; {{ new Date().getFullYear() }}
-              <a
-                href="https://html.zone"
-                target="_blank"
-                title="HTML.ZONE"
-                class="hover:text-primary"
-              >
-                {{ $t('layouts.footer.copyright') }}
-              </a>
+              &copy; {{ new Date().getFullYear() }} {{ title }}. All rights reserved.
             </small>
-          </div>
-
-          <div class="flex justify-center gap-6 text-sm">
-            <a
-              v-if="twitter"
-              :href="twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-              :title="$t('layouts.footer.social.twitter')"
-              aria-label="Twitter"
-              class="
-                block text-muted-foreground
-                hover:text-primary
-              "
-            >
-              <XIcon class="size-6" />
-            </a>
-            <a
-              v-if="telegram"
-              :href="telegram"
-              target="_blank"
-              rel="noopener noreferrer"
-              :title="$t('layouts.footer.social.telegram')"
-              aria-label="Telegram"
-              class="
-                block text-muted-foreground
-                hover:text-primary
-              "
-            >
-              <TelegramIcon class="size-6" />
-            </a>
-            <a
-              v-if="github"
-              :href="github"
-              target="_blank"
-              rel="noopener noreferrer"
-              :title="$t('layouts.footer.social.github')"
-              aria-label="GitHub"
-              class="
-                block text-muted-foreground
-                hover:text-primary
-              "
-            >
-              <GitHubIcon class="size-6" />
-            </a>
           </div>
         </div>
       </div>

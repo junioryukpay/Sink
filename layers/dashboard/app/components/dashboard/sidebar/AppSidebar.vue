@@ -6,7 +6,7 @@ interface NavItem {
   isActive: boolean
 }
 
-const { title } = useAppConfig()
+const { title, logo } = useAppConfig()
 const { isActive } = useDashboardRoute()
 
 const platformItems = computed<NavItem[]>(() => [
@@ -56,13 +56,13 @@ const settingsItems = computed<NavItem[]>(() => [
               <div
                 class="
                   flex aspect-square size-8 items-center justify-center
-                  rounded-full
+                  rounded-full overflow-hidden
                 "
               >
                 <img
-                  src="/sink.png"
+                  :src="logo || '/sink.png'"
                   :alt="title"
-                  class="size-8 rounded-full"
+                  class="size-8 object-contain"
                 >
               </div>
               <div class="grid flex-1 text-left text-sm leading-tight">
